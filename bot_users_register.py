@@ -34,9 +34,9 @@ async def message_handler(message: types.Message):
     user_id = message.from_user.id
     if not is_in_file(user_id):
         add_to_file(user_id)
-        mes = "Add your to DB"
+        mes = "You are subscribed. When someone joins the server you'll get notification!"
     else:
-        mes = "Your already registered!"
+        mes = "You are already subscribed!"
 
     await message.answer(mes)
 
