@@ -1,6 +1,6 @@
 # Telegram bot Minecraft server notification
 ## Description
-This is a telegram bot that sends you notifications wherever someone connects/disconnects to/from the server.   
+This is a telegram bot that sends you notifications whenever someone connects/disconnects to/from the server.   
 [Link to tg bot](https://t.me/minecraftServerNotificationBot).
 
 ## How to launch
@@ -22,3 +22,4 @@ bash tg-bot-minecraft-server-notification.sh  restart
 ```
 
 ## Architechure
+![plot](docs/tg_bot_MSN_files_logic.png)
