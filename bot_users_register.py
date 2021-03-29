@@ -14,6 +14,12 @@ dp = Dispatcher(bot)
 
 
 def is_in_file(id):
+    """
+    Check the user_id in file
+
+    :param user_id:
+    :return
+    """
     with open(user_db_name, "r") as file:
         s_id = str(id)
         for i in file:
@@ -24,6 +30,12 @@ def is_in_file(id):
 
 
 def add_to_file(id):
+    """
+    Add the user id to the next line in file
+
+    :param user_id:
+    :return: 
+    """
     with open(user_db_name, "a") as file:
         file.write(str(id) + "\n")
 
@@ -34,9 +46,9 @@ async def message_handler(message: types.Message):
     user_id = message.from_user.id
     if not is_in_file(user_id):
         add_to_file(user_id)
-        mes = "Add your to DB"
+        mes = "You are subscribed. When someone joins the server you'll get notification!"
     else:
-        mes = "Your already registered!"
+        mes = "You are already subscribed!"
 
     await message.answer(mes)
 

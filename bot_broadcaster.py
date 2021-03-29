@@ -1,5 +1,3 @@
-import pdb
-
 import asyncio
 import logging
 import os
@@ -9,7 +7,6 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.utils import exceptions, executor
 from cfg import API_TOKEN, user_db_name, game_logs
 
-# API_TOKEN = bot_token
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger('broadcast')
@@ -84,11 +81,13 @@ async def broadcaster(text: str = "Empty", users_id: list = []) -> int:
     return count
 
 
-def send_message_by_ids(users_id: list, text: str):
-	executor.start(dp, broadcaster(users_id, text))	
-
-
 def modification_date(filename):
+    """
+    Checker the last modification time
+
+    :param filename:
+    :return: Last modification time
+    """
     t = os.path.getmtime(filename)
     return datetime.datetime.fromtimestamp(t)
 
@@ -108,6 +107,11 @@ def is_changed():
 
 
 def get_text():
+    """
+    Parse the last line of minecraft server logs
+
+    :return: Parsing text
+    """
     last_line = ""
     with open(game_logs, "r") as f1:
         last_line = f1.readlines()[-1]
